@@ -6,6 +6,16 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const Port = process.env.PORT || 8000  ;
+const authRoutes = require("./routes/auth");
+//middelware 
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(cors());
+
+
+
+app.use("/api",authRoutes);
+
 
 
 
@@ -19,11 +29,6 @@ mongoose.connect(process.env.DATABASE,{
 }).catch(() => {
     console.log("DB not Connected")
 });
-
-//middelware 
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(cors());
 
  //Starting a Server
  app.listen(Port,() =>{
