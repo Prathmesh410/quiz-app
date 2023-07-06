@@ -57,8 +57,26 @@ const createQuestion = async (req, res) => {
     }
   };
 
+  const deleteQuestion = async (req, res) => {
+    try {
+      const questionId = req.params.id;
+      
+      // Find and delete the question
+      const deletedQuestion = await Question.findByIdAndDelete(questionId);
+  
+      if (!deletedQuestion) {
+        return res.status(404).json({ error: 'Question not found' });
+      }
+  
+      res.json({ message: 'Question deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to delete the question' });
+    }
+  };
+
   module.exports = {
     createQuestion,
     getQuestionById,
-    updateQuestion
+    updateQuestion,
+    deleteQuestion
   };
