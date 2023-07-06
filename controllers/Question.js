@@ -73,10 +73,23 @@ const createQuestion = async (req, res) => {
       res.status(500).json({ error: 'Failed to delete the question' });
     }
   };
+  const getQuestionsByQuizId = async (req, res) => {
+    try {
+      const quizId = req.params.quizId;
+      
+      // Find all questions belonging to the quiz
+      const questions = await Question.find({ quizId });
+  
+      res.json(questions);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to retrieve the questions' });
+    }
+  };
 
   module.exports = {
     createQuestion,
     getQuestionById,
     updateQuestion,
-    deleteQuestion
+    deleteQuestion,
+    getQuestionsByQuizId
   };
