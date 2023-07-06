@@ -18,7 +18,47 @@ const createQuestion = async (req, res) => {
     }
   };
 
+  const getQuestionById = async (req, res) => {
+    try {
+      const questionId = req.params.id;
+      
+      // Find the question by its ID
+      const question = await Question.findById(questionId);
   
+      if (!question) {
+        return res.status(404).json({ error: 'Question not found' });
+      }
+  
+      res.json(question);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to retrieve the question' });
+    }
+  };
+
+  const updateQuestion = async (req, res) => {
+    try {
+      const questionId = req.params.id;
+      const { question, options, correctAnswer } = req.body;
+  
+      // Find and update the question
+      const updatedQuestion = await Question.findByIdAndUpdate(
+        questionId,
+        { question, options, correctAnswer },
+        { new: true }
+      );
+  
+      if (!updatedQuestion) {
+        return res.status(404).json({ error: 'Question not found' });
+      }
+  
+      res.json(updatedQuestion);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to update the question' });
+    }
+  };
+
   module.exports = {
-    createQuestion
+    createQuestion,
+    getQuestionById,
+    updateQuestion
   };
