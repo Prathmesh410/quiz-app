@@ -8,6 +8,7 @@ const cors = require("cors");
 const Port = process.env.PORT || 8000  ;
 const authRoutes = require("./routes/auth");
 const questionRoutes = require('./routes/Question')
+const quizRoutes = require('./routes/Quiz')
 //middelware 
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -17,6 +18,7 @@ app.use(cors());
 
 app.use("/api",authRoutes);
 app.use("/api",questionRoutes);
+app.use("/api",quizRoutes);
 
 
 
