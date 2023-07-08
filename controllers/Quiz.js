@@ -44,6 +44,7 @@ const getQuizById = async (req, res) => {
     }
   };
 
+
   const updateQuiz = async (req, res) => {
     try {
       const quizId = req.params.id;
@@ -125,6 +126,27 @@ const getQuizById = async (req, res) => {
     }
   };
 
+
+   //middleware
+
+   const getQuizByIdMiddleware = async (req, res, next, id) => {
+    try {
+      const quiz = await Quiz.findById(id);
+  
+      if (!quiz) {
+        return res.status(400).json({
+          error: 'Quiz not found',
+        });
+      }
+  
+      req.quiz = quiz;
+      next();
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to retrieve the quiz' });
+    }
+  };
+
+
 module.exports = {
   createQuiz,
   getQuizById,
@@ -133,5 +155,6 @@ module.exports = {
   deleteQuiz,
   shareQuiz,
   getSharedQuiz,
-  getParticipantScores
+  getParticipantScores,
+  getQuizByIdMiddleware
 };
