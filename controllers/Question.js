@@ -65,14 +65,17 @@ const createQuestion = async (req, res) => {
   const deleteQuestion = async (req, res) => {
     try {
       const questionId = req.params.id;
-      
+      const quizId = req.params.quizId;
+      const quiz = await Quiz.findById(quizId);
+
       // Find and delete the question
       const deletedQuestion = await Question.findByIdAndDelete(questionId);
   
       if (!deletedQuestion) {
         return res.status(404).json({ error: 'Question not found' });
       }
-  
+      quiz.questions = quiz.questions.filter(id => id.toString() !== questionId);
+      await quiz.save();
       res.json({ message: 'Question deleted successfully' });
     } catch (error) {
       res.status(500).json({ error: 'Failed to delete the question' });
@@ -84,7 +87,7 @@ const createQuestion = async (req, res) => {
       
       // Find all questions belonging to the quiz
       const questions = await Question.find({ quizId });
-  
+      
       res.json(questions);
     } catch (error) {
       res.status(500).json({ error: 'Failed to retrieve the questions' });

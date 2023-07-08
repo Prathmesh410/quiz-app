@@ -77,14 +77,16 @@ const getParticipantById = async (req, res) => {
   const deleteParticipant = async (req, res) => {
     try {
       const participantId = req.params.id;
-      
-      // Find and delete the participant
+      const quizId = req.params.quizId;
+      const quiz = await Quiz.findById(quizId);
+
       const deletedParticipant = await Participant.findByIdAndDelete(participantId);
   
       if (!deletedParticipant) {
         return res.status(404).json({ error: 'Participant not found' });
       }
-  
+      quiz.participants = quiz.participants.filter(id => id.toString() !== participantId);
+      await quiz.save();
       res.json({ message: 'Participant deleted successfully' });
     } catch (error) {
       res.status(500).json({ error: 'Failed to delete the participant' });
