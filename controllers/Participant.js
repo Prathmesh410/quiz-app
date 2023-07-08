@@ -1,16 +1,21 @@
 const Participant = require('../models/Participant');
-
+const Quiz = require('../models/Quiz');
 const addParticipant = async (req, res) => {
   try {
-    const { quizId, name, email } = req.body;
-
+    const {  name, email } = req.body;
+    const quizId = req.params.quizId;
+    const quiz = await Quiz.findById(quizId);
+    if (!quiz) {
+      return res.status(404).json({ error: 'Quiz not found' });
+    }
     // Create the participant
     const newParticipant = await Participant.create({
       quizId,
       name,
       email
     });
-
+    quiz.participants.push(newParticipant._id);
+    await quiz.save();
     res.status(201).json(newParticipant);
   } catch (error) {
     res.status(500).json({ error: 'Failed to add the participant' });
