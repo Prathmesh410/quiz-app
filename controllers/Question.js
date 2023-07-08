@@ -86,10 +86,29 @@ const createQuestion = async (req, res) => {
     }
   };
 
+
+  const getQuestionByIdMiddleware = async (req, res, next, id) => {
+    try {
+      const question = await Question.findById(id);
+  
+      if (!question) {
+        return res.status(400).json({
+          error: 'Question not found',
+        });
+      }
+  
+      req.question = question;
+      next();
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to retrieve the question' });
+    }
+  };
+
   module.exports = {
     createQuestion,
     getQuestionById,
     updateQuestion,
     deleteQuestion,
-    getQuestionsByQuizId
+    getQuestionsByQuizId,
+    getQuestionByIdMiddleware
   };

@@ -10,6 +10,7 @@ const authRoutes = require("./routes/auth");
 const questionRoutes = require('./routes/Question')
 const quizRoutes = require('./routes/Quiz')
 const participantRoutes = require('./routes/Paticipant')
+const scoreRoutes = require('./routes/Score')
 //middelware 
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -21,6 +22,7 @@ app.use("/api",authRoutes);
 app.use("/api",questionRoutes);
 app.use("/api",quizRoutes);
 app.use("/api",participantRoutes);
+app.use("/api",scoreRoutes);
 
 
 
