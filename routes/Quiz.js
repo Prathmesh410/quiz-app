@@ -6,7 +6,7 @@ const {isSignedIn,isAuthenticated,getUserByIdMiddleware} = require('../controlle
 router.param("userId",getUserByIdMiddleware);
 
 router.post('/quizzes/:userId',isSignedIn,isAuthenticated,createQuiz);
-router.get('/quizzes/:id/:userId',isSignedIn,isAuthenticated, getQuizById);
+router.get('/quizzes/:id', getQuizById);
 router.get('/quizzes/:userId',isSignedIn,isAuthenticated, getAllQuizzes);
 router.put('/quizzes/:id/:userId',isSignedIn,isAuthenticated, updateQuiz);
 router.delete('/quizzes/:id/:userId',isSignedIn,isAuthenticated, deleteQuiz);

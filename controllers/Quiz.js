@@ -92,7 +92,7 @@ const getQuizById = async (req, res) => {
     try {
       const quizId = req.params.id;
     
-      const shareableLink = `http://localhost:8000/api/quizzes/${quizId}`;
+      const shareableLink = `https://quiz-app-64oc.onrender.com/api/quizzes/${quizId}`;
   
       res.json({ shareableLink });
     } catch (error) {
@@ -100,23 +100,7 @@ const getQuizById = async (req, res) => {
     }
   };
 
-  const getSharedQuiz = async (req, res) => {
-    try {
-      const shareableLink = req.params.link;
-  
-      // Find the quiz by the shared link
-      const quiz = await Quiz.findOne({ shareableLink });
-  
-      if (!quiz) {
-        return res.status(404).json({ error: 'Quiz not found' });
-      }
-  
-      res.json(quiz);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to retrieve the quiz' });
-    }
-  };
-
+ 
   const getParticipantScores = async (req, res) => {
     try {
       const participantId = req.params.participantId;
@@ -158,7 +142,6 @@ module.exports = {
   updateQuiz,
   deleteQuiz,
   shareQuiz,
-  getSharedQuiz,
   getParticipantScores,
   getQuizByIdMiddleware
 };
