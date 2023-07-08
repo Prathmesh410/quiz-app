@@ -1,13 +1,16 @@
 const Quiz = require('../models/Quiz');
 
 const createQuiz = async (req, res) => {
+  console.log(req.params.userId);
+    
   try {
-    const { title, creator } = req.body;
+    const { title } = req.body;
+    const userId  = req.params.userId;
     
     // Create the quiz
     const newQuiz = await Quiz.create({
       title,
-      creator
+      userId
     });
 
     res.status(201).json(newQuiz);
