@@ -1,9 +1,13 @@
 const Question = require('../models/Question');
-
+const Quiz = require('../models/Quiz')
 const createQuestion = async (req, res) => {
     try {
       const {  question, options, correctAnswer } = req.body;
       const quizId = req.params.quizId;
+      const quiz = await Quiz.findById(quizId);
+      if (!quiz) {
+        return res.status(404).json({ error: 'Quiz not found' });
+      }
       // Create the question
       const newQuestion = await Question.create({
         quizId,
@@ -11,7 +15,8 @@ const createQuestion = async (req, res) => {
         options,
         correctAnswer
       });
-      
+      quiz.questions.push(newQuestion._id);
+      await quiz.save();
       res.status(201).json(newQuestion);
     } catch (error) {
       res.status(500).json({ error: 'Failed to create the question' });
