@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {addScore,getScoresByQuizId,getScoresByParticipantId} = require('../controllers/Score');
+const {calculateScore,addScore,getScoresByQuizId,getScoresByParticipantId} = require('../controllers/Score');
 
 // Add a score for a participant in a quiz
-router.post('/quizzes/:quizId/participants/:participantId/scores', addScore);
+router.post('/quizzes/:quizId/participants/:participantId/scores', calculateScore);
 
 // Retrieve all scores for a specific quiz
 router.get('/quizzes/:quizId/scores', getScoresByQuizId);

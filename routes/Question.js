@@ -5,11 +5,9 @@ const {isSignedIn,isAuthenticated,getUserByIdMiddleware} = require('../controlle
 //params
 router.param("userId",getUserByIdMiddleware);
 
-router.post('/:quizId/questions',isSignedIn,isAuthenticated, createQuestion);
-router.get('/questions/:id', getQuestionById);
-router.put('/questions/:id',isSignedIn,isAuthenticated, updateQuestion);
-router.delete('/:quizId/questions/:id',isSignedIn,isAuthenticated, deleteQuestion);
-
-//optional
-router.get('/quizzes/:quizId/questions',isSignedIn,isAuthenticated, getQuestionsByQuizId);
+router.post('/:quizId/questions/:userId',isSignedIn,isAuthenticated, createQuestion);
+router.get('/questions/:id/:userId', getQuestionById);
+router.put('/questions/:id/:userId',isSignedIn,isAuthenticated, updateQuestion);
+router.delete('/:quizId/questions/:id/:userId',isSignedIn,isAuthenticated, deleteQuestion);
+router.get('/quizzes/:quizId/questions', getQuestionsByQuizId);
 module.exports = router;
