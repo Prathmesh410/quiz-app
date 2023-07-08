@@ -86,7 +86,7 @@ const createQuestion = async (req, res) => {
       const quizId = req.params.quizId;
       
       // Find all questions belonging to the quiz
-      const questions = await Question.find({ quizId });
+      const questions = await Question.find({ quizId }).select('-correctAnswer');
       
       res.json(questions);
     } catch (error) {
