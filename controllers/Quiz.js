@@ -38,8 +38,9 @@ const getQuizById = async (req, res) => {
 
   const getAllQuizzes = async (req, res) => {
     try {
-      // Find all quizzes
-      const quizzes = await Quiz.find();
+      const userId = req.params.userId;
+  
+      const quizzes = await Quiz.find({ userId });
   
       res.json(quizzes);
     } catch (error) {
