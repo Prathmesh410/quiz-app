@@ -21,7 +21,7 @@ const getQuizById = async (req, res) => {
       const quizId = req.params.id;
       
       // Find the quiz by its ID
-      const quiz = await Quiz.findById(quizId);
+      const quiz = await Quiz.findById(quizId).populate('questions');
   
       if (!quiz) {
         return res.status(404).json({ error: 'Quiz not found' });
