@@ -1,3 +1,7 @@
+# Quiz App API
+
+This API provides functionality for a quiz application where users can create quizzes, answer questions, and view scores. The API is built using the MERN stack (MongoDB, Express.js, React.js, Node.js).
+
 # Features
 
 1. User Authentication: Users can sign up, sign in, and sign out. Authentication is implemented using JWT (JSON Web Tokens).
