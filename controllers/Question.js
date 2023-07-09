@@ -45,10 +45,22 @@ const createQuestion = async (req, res) => {
       const questionId = req.params.id;
       const { question, options, correctAnswer } = req.body;
   
+      // Create an update object to include only the provided fields
+      const updateObj = {};
+      if (question) {
+        updateObj.question = question;
+      }
+      if (options) {
+        updateObj.options = options;
+      }
+      if (correctAnswer) {
+        updateObj.correctAnswer = correctAnswer;
+      }
+  
       // Find and update the question
       const updatedQuestion = await Question.findByIdAndUpdate(
         questionId,
-        { question, options, correctAnswer },
+        updateObj,
         { new: true }
       );
   
@@ -61,6 +73,7 @@ const createQuestion = async (req, res) => {
       res.status(500).json({ error: 'Failed to update the question' });
     }
   };
+  
 
   const deleteQuestion = async (req, res) => {
     try {
