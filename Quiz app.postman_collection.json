@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "fbce609a-95b1-4f4a-a115-3c8d4dbe61a9",
+		"name": "Quiz app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22932377"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test1\",\r\n    \"email\":\"test@test.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/signup",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"email\": \"test@test.com\",\r\n     \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/signin",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Question",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE5YWYxY2ExMTQwOTAwM2UxZDEwZDMiLCJpYXQiOjE2ODg4ODAzMTV9.DsBkMIuX6PRaQXqJIUJYaWGd9KZJOIUhMz8sU6Xpz80",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\": \"Which is the highest mountain in the world?\",\r\n  \"options\": [\"Mount Everest\", \"K2\", \"Kangchenjunga\", \"Makalu\"],\r\n  \"correctAnswer\": [\"Mount Everest\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/64aa44d165fea2003cd28d56/questions/64a9af1ca11409003e1d10d3",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"64aa44d165fea2003cd28d56",
+								"questions",
+								"64a9af1ca11409003e1d10d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/questions/64aa4b244cdf09003c95c375",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"questions",
+								"64aa4b244cdf09003c95c375"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE5YWYxY2ExMTQwOTAwM2UxZDEwZDMiLCJpYXQiOjE2ODg4ODAzMTV9.DsBkMIuX6PRaQXqJIUJYaWGd9KZJOIUhMz8sU6Xpz80",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"options\": [\"Mount Everest\", \"K2\", \"Kangchenjunga\", \"Makalu\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/questions/64aa4b244cdf09003c95c375/64a9af1ca11409003e1d10d3",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"questions",
+								"64aa4b244cdf09003c95c375",
+								"64a9af1ca11409003e1d10d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE5YWYxY2ExMTQwOTAwM2UxZDEwZDMiLCJpYXQiOjE2ODg4ODAzMTV9.DsBkMIuX6PRaQXqJIUJYaWGd9KZJOIUhMz8sU6Xpz80",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/64aa44d165fea2003cd28d56/questions/64aa4b244cdf09003c95c375/64a9af1ca11409003e1d10d3",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"64aa44d165fea2003cd28d56",
+								"questions",
+								"64aa4b244cdf09003c95c375",
+								"64a9af1ca11409003e1d10d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Questions By QuizId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64aa44d165fea2003cd28d56/questions",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64aa44d165fea2003cd28d56",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quiz",
+			"item": [
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE5YWYxY2ExMTQwOTAwM2UxZDEwZDMiLCJpYXQiOjE2ODg4ODAzMTV9.DsBkMIuX6PRaQXqJIUJYaWGd9KZJOIUhMz8sU6Xpz80",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"testQuiz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64a9af1ca11409003e1d10d3",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64a9af1ca11409003e1d10d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Quizes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE5YWYxY2ExMTQwOTAwM2UxZDEwZDMiLCJpYXQiOjE2ODg4ODAzMTV9.DsBkMIuX6PRaQXqJIUJYaWGd9KZJOIUhMz8sU6Xpz80",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64a9af1ca11409003e1d10d3",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64a9af1ca11409003e1d10d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get quiz by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE5YWYxY2ExMTQwOTAwM2UxZDEwZDMiLCJpYXQiOjE2ODg4ODAzMTV9.DsBkMIuX6PRaQXqJIUJYaWGd9KZJOIUhMz8sU6Xpz80",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64aa44d165fea2003cd28d56",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64aa44d165fea2003cd28d56"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE5YWYxY2ExMTQwOTAwM2UxZDEwZDMiLCJpYXQiOjE2ODg4NDIwMzR9.Jo7k7HvcxItFGlQzZeMwguWMm8t9jQlzjQVYUEWJw3Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"test quiz updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64aa44d165fea2003cd28d56/64a9af1ca11409003e1d10d3",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64aa44d165fea2003cd28d56",
+								"64a9af1ca11409003e1d10d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE5YWYxY2ExMTQwOTAwM2UxZDEwZDMiLCJpYXQiOjE2ODg4NDIwMzR9.Jo7k7HvcxItFGlQzZeMwguWMm8t9jQlzjQVYUEWJw3Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64a9b048a11409003e1d10e3/64a9af1ca11409003e1d10d3",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64a9b048a11409003e1d10e3",
+								"64a9af1ca11409003e1d10d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sharable link",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Praticipant",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"testParticipant\",\r\n    \"email\" : \"test1@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64aa44d165fea2003cd28d56/participants",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64aa44d165fea2003cd28d56",
+								"participants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/participants/64aa503e4cdf09003c95c381",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"participants",
+								"64aa503e4cdf09003c95c381"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all participants of a quiz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64aa44d165fea2003cd28d56/participants",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64aa44d165fea2003cd28d56",
+								"participants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"testParticipantupdate\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/participants/64aa52904cdf09003c95c386",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"participants",
+								"64aa52904cdf09003c95c386"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/64aa44d165fea2003cd28d56/participants/64aa52904cdf09003c95c386",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"64aa44d165fea2003cd28d56",
+								"participants",
+								"64aa52904cdf09003c95c386"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Score",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"answers\": [\r\n    {\r\n      \"questionId\": \"64aa4ae14cdf09003c95c361\",\r\n      \"answers\": [\"Java\",\r\n                \"Python\"]\r\n    },\r\n    {\r\n      \"questionId\": \"64aa4b0a4cdf09003c95c366\",\r\n      \"answers\": [\r\n                \"H\"\r\n            ]\r\n    },\r\n    {\r\n      \"questionId\": \"64aa4b124cdf09003c95c36b\",\r\n      \"answers\":[\r\n                \"Red\",\r\n                \"Green\",\r\n                \"Blue\"]\r\n    },\r\n     {\r\n      \"questionId\": \"64aa4b194cdf09003c95c370\",\r\n      \"answers\":[\r\n                \"London\",\r\n                \"Paris\"\r\n            ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64aa44d165fea2003cd28d56/participants/64aa44d165fea2003cd28d56/scores",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64aa44d165fea2003cd28d56",
+								"participants",
+								"64aa44d165fea2003cd28d56",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all scores for a specific quiz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/quizzes/64aa44d165fea2003cd28d56/scores",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"quizzes",
+								"64aa44d165fea2003cd28d56",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all scores for a specific participant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://quiz-app-64oc.onrender.com/api/participants/64aa503e4cdf09003c95c381/scores",
+							"protocol": "https",
+							"host": [
+								"quiz-app-64oc",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"participants",
+								"64aa503e4cdf09003c95c381",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
